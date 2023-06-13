@@ -24,11 +24,10 @@ with open(input_file, 'r') as f_in, open(output_file, 'w') as f_out:
             #print(len(seq)-len(new_seq))
 
 
-            
+            #remove first and last 4 nucleotides of the sequence
             new_seq = seq[4:-4]
             new_qual= qual[4:-4]
-            #for i in range(4, len(seq)-4):
-             #   new_seq += seq[i]
+        
 
 
             f_out.write(header + '\n')
