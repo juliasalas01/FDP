@@ -1,0 +1,21 @@
+input.file=$(file).maf.gz
+input.file.compression=gzip
+input.format=Maf
+output.log=/dev/null
+maf.filter=\
+    Subset(\
+        species=($(sp1),$(sp2),$(sp3),$(sp4),$(sp5),$(sp6),$(sp7),$(sp8)),\
+        strict=yes,\
+        keep=no,\
+        remove_duplicates=yes),\
+    XFullGap(\
+        species=($(sp1),$(sp2),$(sp3),$(sp4),$(sp5),$(sp6),$(sp7),$(sp8))),   \
+    Merge(                                  \
+        species=($(ref)),  \
+        dist_max=2000,                         \
+        ignore_chr=(Random,Unknown),        \
+        rename_chimeric_chromosomes=yes), \
+    MinBlockLength(min_length=2000), \
+    Output(                                 \
+        file=$(file).filtered.maf,          \
+        compression=none)
